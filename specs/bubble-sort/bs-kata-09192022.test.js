@@ -9,29 +9,28 @@
   swapping their places if the smaller index's value is larger than the larger
   index's. Continue looping through until all values are in ascending order
 
-  global test
 */
 
-function bubbleSort(nums) {
-  // code goes here
-  let numberOftimes = nums.length - 1;
-  while (numberOftimes) {
-    for (let i = 0; i < nums.length; i++) {
-      if (nums[i] > nums[i + 1]) {
-        const largerNumber = nums[i];
-        const smallerNumber = nums[i + 1];
-        nums[i] = smallerNumber;
-        nums[i + 1] = largerNumber;
+const bubbleSort = (array) => {
+  if (array.length < 2) return array;
+  let times = array.length;
+
+  while (times) {
+    for (let i = 0; i < times; i++) {
+      if (array[i] > array[i + 1]) {
+        const small = array[i + 1];
+        const large = array[i];
+        array[i] = small;
+        array[i + 1] = large;
       }
     }
-    numberOftimes -= 1;
+    times--
   }
-  return nums;
+
+  return array;
 }
 
-const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
-const sortedNums = bubbleSort(nums);
-console.log(sortedNums)
+
 
 // unit tests
 // do not modify the below code

@@ -9,17 +9,18 @@
  
  */
 
-function nestedAdd(array) {
+const nestedAdd = (arr) => {
   let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    const item = array[i];
+
+  arr.forEach(item => {
     if (Array.isArray(item)) sum += nestedAdd(item);
     if (Number.isInteger(item)) sum += item;
-  }
-  return sum;
-}     
+  });
 
-test.skip("nested arrays addition", () => {
+  return sum;
+}
+
+test("nested arrays addition", () => {
   expect(nestedAdd([1, 2, 3])).toEqual(6);
   expect(nestedAdd([1, [2], 3])).toEqual(6);
   expect(nestedAdd([[[[[[[[[5]]]]]]]]])).toEqual(5);

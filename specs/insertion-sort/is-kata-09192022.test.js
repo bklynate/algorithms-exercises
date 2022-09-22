@@ -18,19 +18,16 @@ function insertionSort(nums) {
   for (let i = 1; i < nums.length; i++) {
     for (let j = i; j > 0; j--) {
       if (nums[j] < nums[j - 1]) {
-        const large = nums[j - 1];
         const small = nums[j];
-        nums[j - 1] = small;
-        nums[j] = large
+        const large = nums[j - 1];
+        nums[j] = large;
+        nums[j-1] = small;
       }
     }
   }
-
   return nums;
 }
 
-console.log(insertionSort([10, 5, 2, 9, 3, -2,0]))
-console.log(insertionSort([1, 10, 5, 3, 8, 2, 6, 4, 7, 9, 1]));
 
 // unit tests
 // do not modify the below code

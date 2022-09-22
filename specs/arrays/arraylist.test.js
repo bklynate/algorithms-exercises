@@ -19,60 +19,92 @@
 
 class ArrayList {
   // code goes here
+  constructor() {
+    this.length = 0;
+    this.state = {};
+  }
+
+  push = (item) => {
+    this.state[this.length] = item;
+    this.length++;
+  }
+
+  pop = () => {
+    const popped = this.state[this.length - 1]
+    delete this.state[this.length - 1]
+    this.length--;
+    return popped;
+  }
+
+  get = (index) => {
+    return this.state[index];
+  }
+
+  delete = (index) => {
+    const deleted = this.state[index]
+    this._collapseTo(index)
+    return deleted;
+  }
+
+  _collapseTo(index) {
+    for (let i = index; i < this.length; i++) {
+      this.state[i] = this.state[i + 1];
+    }
+    delete this.state[this.length - 1];
+    this.length--;
+  }
 }
 
 // unit tests
 // do not modify the below code
-describe.skip("ArrayList", function () {
-  const range = (length) =>
-    Array.apply(null, { length: length }).map(Number.call, Number);
-  const abcRange = (length) =>
-    range(length).map((num) => String.fromCharCode(97 + num));
+describe('ArrayList', function () {
+  const range = length => Array.apply(null, { length: length }).map(Number.call, Number);
+  const abcRange = length => range(length).map(num => String.fromCharCode(97 + num));
   let list;
 
   beforeEach(() => {
     list = new ArrayList();
   });
 
-  test("constructor", () => {
+  test('constructor', () => {
     expect(list).toEqual(expect.any(ArrayList));
   });
 
-  test("push", () => {
-    abcRange(26).map((character) => list.push(character));
+  test('push', () => {
+    abcRange(26).map(character => list.push(character));
     expect(list.length).toEqual(26);
   });
 
-  test("pop", () => {
-    abcRange(13).map((character) => list.push(character));
+  test('pop', () => {
+    abcRange(13).map(character => list.push(character));
     expect(list.length).toEqual(13);
     range(10).map(() => list.pop());
     expect(list.length).toEqual(3);
-    expect(list.pop()).toEqual("c");
+    expect(list.pop()).toEqual('c');
   });
 
-  test("get", () => {
-    list.push("first");
-    expect(list.get(0)).toEqual("first");
-    list.push("second");
-    expect(list.get(1)).toEqual("second");
-    expect(list.get(0)).toEqual("first");
-    abcRange(26).map((character) => list.push(character));
-    expect(list.get(27)).toEqual("z");
-    expect(list.get(0)).toEqual("first");
-    expect(list.get(9)).toEqual("h");
+  test('get', () => {
+    list.push('first');
+    expect(list.get(0)).toEqual('first');
+    list.push('second');
+    expect(list.get(1)).toEqual('second');
+    expect(list.get(0)).toEqual('first');
+    abcRange(26).map(character => list.push(character));
+    expect(list.get(27)).toEqual('z');
+    expect(list.get(0)).toEqual('first');
+    expect(list.get(9)).toEqual('h');
     list.pop();
-    expect(list.get(list.length - 1)).toEqual("y");
+    expect(list.get(list.length - 1)).toEqual('y');
   });
 
-  test("delete", () => {
-    abcRange(26).map((character) => list.push(character));
+  test('delete', () => {
+    abcRange(26).map(character => list.push(character));
     list.delete(13);
     expect(list.length).toEqual(25);
-    expect(list.get(12)).toEqual("m");
-    expect(list.get(13)).toEqual("o");
+    expect(list.get(12)).toEqual('m');
+    expect(list.get(13)).toEqual('o');
     list.delete(0);
     expect(list.length).toEqual(24);
-    expect(list.get(0)).toEqual("b");
+    expect(list.get(0)).toEqual('b');
   });
 });
