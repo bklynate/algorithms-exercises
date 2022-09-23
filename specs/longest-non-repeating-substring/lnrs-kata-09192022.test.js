@@ -1,7 +1,7 @@
 const longestNonRepeatingSubstring = s => {
   let start = 0;
-  const seen = new Set();
   let max = 0;
+  const seen = new Set();
 
   for (let end = 0; end < s.length; end++) {
     while (seen.has(s[end])) {

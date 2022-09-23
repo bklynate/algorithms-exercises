@@ -1,23 +1,4 @@
-/*
-
-Binary Search Tree!
-
-Name your class Tree. 
-
-I'd suggest making another class called Node. You don't have to; you can make them all plain JS objects
-
-Here you'll make a BST. Your Tree class will have keep track of a root which will be the first item added
-to your tree. From there, if the item is less than the value of that node, it will go into its left subtree
-and if greater it will go to the right subtree.
-
-value - integer     - value being contained in the node
-left  - Node/object - the left node which itself may be another tree
-right - Node/object - the right node which itself may be another tree
-
-*/
-
 class Tree {
-  // code goes here
   constructor() {
     this.root = null;
   }
@@ -29,17 +10,16 @@ class Tree {
       let current = this.root;
       while (true) {
         if (current.value > value) {
-          // go left
+          // we go left
           if (current.left) {
-            current = current.left;
+            current = current.left
           } else {
             current.left = new Node(value);
-            break
+            break;
           }
         } else {
-          // go right
           if (current.right) {
-            current = current.right
+            current = current.right;
           } else {
             current.right = new Node(value);
             break
@@ -63,8 +43,6 @@ class Node {
   }
 }
 
-// unit tests
-// do not modify the below code
 describe("Binary Search Tree", function () {
   it("creates a correct tree", () => {
     const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8];

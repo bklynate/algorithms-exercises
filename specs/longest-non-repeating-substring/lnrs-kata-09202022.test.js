@@ -13,6 +13,7 @@ const longestNonRepeatingSubstring = s => {
     seen.add(s[end]);
 
     if (max < end - start + 1) {
+      console.log(start, end + 1)
       string = s.slice(start, end + 1)
     }
 
