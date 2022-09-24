@@ -7,7 +7,21 @@
 */
 
 function averagePair(sortedArr, num) {
+  let start = 0;
+  let end = sortedArr.length - 1;
 
+  while (start < end) {
+    const avg = (sortedArr[start] + sortedArr[end]) / 2;
+
+    if (avg === num) {
+      return true;
+    } else if (avg < num) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+  return false;
 }
 
 test('averagePair', () => {
