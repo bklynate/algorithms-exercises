@@ -5,7 +5,7 @@ const longestNonRepeatingSubstring = s => {
 
   for (let end = 0; end < s.length; end++) {
     while (seen.has(s[end])) {
-      seen.delete(s[end]);
+      seen.delete(s[start]);
       start++;
     }
     seen.add(s[end]); 
@@ -17,4 +17,5 @@ const longestNonRepeatingSubstring = s => {
 
 test('longestNonRepeatingSubstring', () => {
   expect(longestNonRepeatingSubstring('abcabcbb')).toEqual(3);
+  expect(longestNonRepeatingSubstring('ab0c0ed')).toEqual(4)
 });

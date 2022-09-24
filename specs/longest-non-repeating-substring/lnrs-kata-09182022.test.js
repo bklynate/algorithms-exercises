@@ -15,4 +15,5 @@ const longestNonRepeatingSubstring = (s) => {
 
 test('longestNonRepeatingSubstring', () => {
   expect(longestNonRepeatingSubstring('abcabcbb')).toEqual(3)
+  expect(longestNonRepeatingSubstring('ab0c0ed')).toEqual(4)
 })

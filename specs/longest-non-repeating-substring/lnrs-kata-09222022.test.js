@@ -6,7 +6,7 @@ function longestNonRepeatingSubstring(str) {
 
   for (let i = 0; i < str.length; i++) {
     while (seen.has(str[i])) {
-      seen.delete(str[i]);
+      seen.delete(str[start]);
       start++;
     }
 
@@ -23,5 +23,6 @@ function longestNonRepeatingSubstring(str) {
 
 test('longestNonRepeatingSubstring', () => {
   expect(longestNonRepeatingSubstring('abcabcbb')).toEqual(3)
+  expect(longestNonRepeatingSubstring('ab0c0ed')).toEqual(4)
 })
 
