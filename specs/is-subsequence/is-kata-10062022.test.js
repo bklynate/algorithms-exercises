@@ -3,22 +3,20 @@
   which takes in two strings...
   checks whether the characters in the first string...
   form a subsequence of the characters in the second string. 
-
   In other words, the function should check whether the characters...
   in the first string appear somewhere in the second string...
   without their order changing.
 */
 
-function isSubsequence(str1, str2) {
+function isSubsequence(str1, str2) { 
   let start = 0;
-  let next = 0;
+  let movingTarget = 0;
 
-  while (next < str2.length) {
-    if (str1[start] === str2[next]) start++
-    if (start === str1.length) return true;
-    next++
+  while (movingTarget < str2.length) {
+    if (str1[start] === str2[movingTarget]) start++
+    if (start === str1.length) return true
+    movingTarget++
   }
-
   return false
 }
 
